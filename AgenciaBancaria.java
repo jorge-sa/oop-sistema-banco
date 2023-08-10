@@ -13,11 +13,20 @@ public class AgenciaBancaria {
         this.numero_agencia = novo_numero_agencia;
     }
 
+    public ContaBancaria getContaBancaria( int n_conta ) {
+        for (ContaBancaria conta : lista_ContaBancarias) {
+            if (conta.getNumeroConta() == n_conta) {
+                return conta;
+            }
+        }
+        return null;
+    }
+
     public void adicionarContaBanciaria ( int n_conta, float saldo, String titular ) {
         ContaBancaria conta_temp = new ContaBancaria();
         conta_temp.setNomeTitular(titular);
         conta_temp.setNumeroConta(n_conta);
-        conta_temp.setSaldo(saldo);
+        conta_temp.deposito(saldo);
         lista_ContaBancarias.add(conta_temp);
     }
 
@@ -27,7 +36,8 @@ public class AgenciaBancaria {
             return;
         }
         for ( ContaBancaria conta : lista_ContaBancarias ) {
-            System.out.println(conta.getNumeroConta() + " " + conta.getNomeTitular());
+            System.out.println(conta.getNumeroConta() + " | Titular: " + conta.getNomeTitular()
+            + " | Saldo: " + conta.getSaldo());
         }
     }
 

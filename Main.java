@@ -16,6 +16,7 @@ public class Main {
                 System.out.println("=============================");
                 System.out.println("1 - Criar Agencia Bancaria");
                 System.out.println("2 - Criar Conta Bancaria");
+                System.out.println("3 - Manipular Conta Bancaria");
                 System.out.println("0 - Fechar Sistema");
                 System.out.println("=============================");
             
@@ -57,6 +58,52 @@ public class Main {
                             }
 
                             System.out.println("Agencia selecionada não existe");
+                            break;
+                        case 3:
+                            if (lista_AgenciaBancarias.size() == 0) {
+                                System.out.println("Não existe uma Agencia Bancaria.");
+                                break;
+                            }
+
+                            System.out.println("Selecione Agencia Bancaria [1-"+lista_AgenciaBancarias.size()+"]");
+                            op = rd.nextInt();
+
+                            for (AgenciaBancaria agencia : lista_AgenciaBancarias) {
+                                if (agencia.getNumeroAgencia() == op) {
+                                    System.out.println("Informe o número da conta: ");
+                                    op = rd.nextInt();
+
+                                    ContaBancaria conta = agencia.getContaBancaria(op);
+
+                                    if (conta == null) {
+                                        System.out.println("Conta não encontrada.");
+                                    } else {
+                                        System.out.println("======================");
+                                        System.out.println("1 - Saldo");
+                                        System.out.println("2 - Saque");
+                                        System.out.println("3 - Deposito");
+                                        op = rd.nextInt();
+
+                                        switch (op) {
+                                            case 1:
+                                                System.out.println("Saldo de " + conta.getNomeTitular() + ": " + conta.getSaldo());
+                                                break;
+                                            case 2:
+                                                System.out.println("Valor da operação: ");
+                                                saldo = rd.nextFloat();
+                                                conta.saque(saldo);
+                                                break;
+                                            case 3:
+                                                System.out.println("Valor da operação: ");
+                                                saldo = rd.nextFloat();
+                                                conta.deposito(saldo);
+                                                break;
+                                            default:
+                                                System.out.println("Operação invalida.");
+                                        }
+                                    }
+                                }
+                            }
                             break;
                         default:
                             System.out.println("Opção invalida.");

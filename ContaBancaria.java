@@ -2,7 +2,7 @@ public class ContaBancaria {
 
     private int numero_conta;
     private String nome_titular;
-    private float saldo;
+    private float saldo = 0f;
 
     public int getNumeroConta() {
         return this.numero_conta;
@@ -24,8 +24,14 @@ public class ContaBancaria {
         return this.saldo;
     }
 
-    public void setSaldo( float novo_saldo ) {
-        this.saldo = novo_saldo;
+    public void saque( float valor_saque ) {
+        this.saldo -= valor_saque;
+        System.out.println("Novo saldo: " + this.saldo);
+    }
+
+    public void deposito( float valor_deposito ) {
+        this.saldo += valor_deposito;
+        System.out.println("Novo saldo: " + this.saldo);
     }
 
 }
