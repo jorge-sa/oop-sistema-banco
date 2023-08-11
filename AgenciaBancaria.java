@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class AgenciaBancaria {
     
-    private int numero_agencia;
+    private int numero_agencia, conta_count = 1;
     private ArrayList<ContaBancaria> lista_ContaBancarias = new ArrayList<ContaBancaria>();
 
     public int getNumeroAgencia() {
@@ -22,12 +22,16 @@ public class AgenciaBancaria {
         return null;
     }
 
-    public void adicionarContaBanciaria ( int n_conta, float saldo, String titular ) {
+    public void adicionarContaBanciaria ( float saldo, String titular ) {
         ContaBancaria conta_temp = new ContaBancaria();
         conta_temp.setNomeTitular(titular);
-        conta_temp.setNumeroConta(n_conta);
+        conta_temp.setNumeroConta(conta_count);
         conta_temp.deposito(saldo);
         lista_ContaBancarias.add(conta_temp);
+        System.out.println("Conta criada!");
+        System.out.println("| Numero: " + this.conta_count + " | Titular: "
+        + titular + " | Saldo: " + saldo);
+        conta_count++;
     }
 
     public void verContasBancarias() {
@@ -37,7 +41,7 @@ public class AgenciaBancaria {
         }
         for ( ContaBancaria conta : lista_ContaBancarias ) {
             System.out.println(conta.getNumeroConta() + " | Titular: " + conta.getNomeTitular()
-            + " | Saldo: " + conta.getSaldo());
+            + " | Saldo: " + conta.getSaldo() + " |");
         }
     }
 

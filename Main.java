@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main( String[] args ) {
         
-        int n_conta, n_agencia = 1, op;
+        int n_agencia = 1, op;
         String nm_titular;
         float saldo;
         ArrayList<AgenciaBancaria> lista_AgenciaBancarias = new ArrayList<>();
@@ -44,15 +44,13 @@ public class Main {
 
                             for (AgenciaBancaria agencia : lista_AgenciaBancarias) {
                                 if (agencia.getNumeroAgencia() == op) {
-                                    System.out.println("Numero da conta: ");
-                                    n_conta = rd.nextInt();
                                     System.out.println("Saldo da conta: ");
                                     saldo = rd.nextFloat();
                                     rd.nextLine();
                                     System.out.println("Nome do titular: ");
                                     nm_titular = rd.nextLine();
 
-                                    agencia.adicionarContaBanciaria(n_conta, saldo, nm_titular);
+                                    agencia.adicionarContaBanciaria( saldo, nm_titular);
                                     break swit;
                                 }
                             }
